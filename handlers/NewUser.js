@@ -124,7 +124,6 @@ exports.login = (req, res) => {
   //Auth.setPersistence(firebase.auth.Persistence.NONE);
   let Data, AccessToken, RefreshToken;
   Auth.signInWithEmailAndPassword(auth, user.email.trim(), user.password.trim())
-
     .then((data) => {
       Data = data;
       RefreshToken = Data.user.refreshToken;
@@ -152,8 +151,7 @@ exports.updateUserDetails = (req, res) => {
 
   const DB = db.collection("users").doc(req.body.email)
 
- DB
-    .update({
+ DB.update({
       amount: req.body.newAmount
     })
     .then((data) => {
