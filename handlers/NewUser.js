@@ -157,7 +157,7 @@ exports.updateUserDetails = (req, res) => {
     .then((data) => {
       DB.onSnapshot((doc) => {
         console.log("Current data: ", doc.data(), data),
-          res.status(202).json(doc.data();
+          res.status(202).json(doc.data());
       });
       
     })
