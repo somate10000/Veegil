@@ -149,18 +149,19 @@ exports.login = (req, res) => {
 };
 
 exports.updateUserDetails = (req, res) => {
-  const acc_name = "Veegil Sunday";
-  // console.log(req.body.email);
 
-  db.collection("users")
-    .doc("Flashkid20@flash.com")
+  const DB = db.collection("users").doc(req.body.email)
+
+ DB
     .update({
-      firstname: "Veegil",
-      lastname: "Sunday",
+      amount: req.body.newAmount
     })
     .then((data) => {
-      console.log(data), res.status(202).json(data);
-      // return res.status(202).json(data.data()), console.log(data.data());
+      DB.onSnapshot((doc) => {
+        console.log("Current data: ", doc.data().amount, data),
+          res.status(202).json(data);
+      });
+      
     })
     .catch((e) => console.log(e));
 };
