@@ -60,6 +60,8 @@ exports.signup = (req, res) => {
   const noImg = "blank-profile-picture-973460_960_720.webp";
   //console.log(req.body);
 
+   const nuban = req.body.phoneNumber.substring(1);
+  
   const payload = {
     acc_email: req.body.email,
     acc_nuban: nuban,
