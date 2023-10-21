@@ -149,17 +149,15 @@ exports.login = (req, res) => {
 
 exports.updateUserDetails = (req, res) => {
 
-  const DB = db.collection("users").doc(req.body.email)
+   const DB = db.collection("users").doc(req.body.email);
 
- DB.update({
-      amount: req.body.newAmount
-    })
+  DB.update({
+    amount: req.body.newAmount,
+  })
     .then((data) => {
       DB.onSnapshot((doc) => {
-        console.log("Current data: ", doc.data(), data),
-          res.status(202).json(doc.data());
+        console.log("Current data: ", doc.data(), data), res.json(doc.data());
       });
-      
     })
     .catch((e) => console.log(e));
 };
